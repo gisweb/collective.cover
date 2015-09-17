@@ -32,6 +32,13 @@
   <utility factory=".setuphandlers.HiddenProfiles" name="collective.cover" />
   <utility factory=".setuphandlers.HiddenProducts" name="collective.cover" />
 
+  <genericsetup:importStep
+      name="collective.cover"
+      title="collective.cover custom import handlers"
+      description=""
+      handler="collective.cover.setuphandlers.import_various"
+      />
+
   <genericsetup:upgradeSteps
       source="5"
       destination="6"
