@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a11 (2015-07-07)
 ^^^^^^^^^^^^^^^^^^^
 
+- Add patch to content chooser title tooltip text.
+  [alecm]
+
 - Emit the layout identifier in the body class (closes `#216`_).
   [hvelarde, djowett]
 
