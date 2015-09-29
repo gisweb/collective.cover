@@ -105,6 +105,29 @@
                 });
             },
 
+            generate_tile_uuid: function (){
+                var uuid = Math.floor(Math.random()*100000000000).toString(16);
+                while (uuid.length < 8 || !isNaN(uuid[0])){
+                    // Check length is 8 and must start with non digit character
+                    // http://css-tricks.com/ids-cannot-start-with-a-number/
+                    uuid = Math.floor(Math.random()*100000000000).toString(16);
+                }
+                uuid = uuid.slice(0, 8);
+                var aux = "";
+                while (uuid.length < 32){
+                    // Now generate the remaining
+                    while (aux.length < 8){
+                        aux = Math.floor(Math.random()*100000000000).toString(16);
+                    }
+                    uuid += aux.slice(0, 8);
+                    aux = "";
+                }
+
+                // Shouldn't be needed, but make sure we always return 32 chars
+                return uuid.slice(0,32)
+
+            },
+
             /**
              * Row drop handler
              * available from outside the droppable definition
@@ -182,30 +205,26 @@
                         var is_configurable = ui.draggable.data('tile-configurable');
                         new_tile.attr("data-tile-type", tile_type);
 
-                        $.ajax({
-                            url: "@@uid_getter",
-                            success: function(info, la) {
-                                new_tile.attr("id", info);
-                                var url_config = "@@configure-tile/" + tile_type + "/" + info;
+                        var uuid = self.generate_tile_uuid();
 
-                                var config_icon = $("<i/>").addClass("config-icon");
-                                var config_link = $("<a />").addClass("config-tile-link")
-                                    .attr('href',url_config)
-                                    .append(config_icon);
-                                var name_tag = $("<span />").addClass("tile-name")
-                                    .text(ui.draggable.data('tile-name'));
-                                if(is_configurable) {
-                                    new_tile.append(config_link);
-                                }
-                                new_tile.append(name_tag);
+                        new_tile.attr("id", uuid);
+                        var url_config = "@@configure-tile/" + tile_type + "/" + uuid;
 
-                                $(column_elem).append(new_tile);
-                                self.delete_manager(new_tile);
+                        var config_icon = $("<i/>").addClass("config-icon");
+                        var config_link = $("<a />").addClass("config-tile-link")
+                            .attr('href',url_config)
+                            .append(config_icon);
+                        var name_tag = $("<span />").addClass("tile-name")
+                            .text(ui.draggable.data('tile-name'));
+                        if(is_configurable) {
+                            new_tile.append(config_link);
+                        }
+                        new_tile.append(name_tag);
 
-                                le.trigger('modified.layout');
-                                return false;
-                            }
-                        });
+                        $(column_elem).append(new_tile);
+                        self.delete_manager(new_tile);
+
+                        le.trigger('modified.layout');
                     }
                 });
 
