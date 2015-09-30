@@ -124,7 +124,7 @@
                 }
 
                 // Shouldn't be needed, but make sure we always return 32 chars
-                return uuid.slice(0,32)
+                return uuid.slice(0,32);
 
             },
 
