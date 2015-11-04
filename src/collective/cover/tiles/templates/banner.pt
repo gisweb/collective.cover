@@ -11,8 +11,7 @@
 
   <div class="cover-banner-tile tile-content"
        tal:condition="not:is_empty"
-       tal:define="title view/Title;
-                   has_image view/has_image;
+       tal:define="has_image view/has_image;
                    remote_url view/getRemoteUrl">
 
     <tal:image condition="has_image">
@@ -25,7 +24,7 @@
                                width thumbnail/width;
                                height thumbnail/height;
                                class view/css_class;
-                               alt title" />
+                               alt view/data/description|view/data/title" />
         </a>
     </tal:image>
 
@@ -34,15 +33,15 @@
 
       <h2 tal:condition="python:htmltag == 'h2'">
          <a tal:attributes="href remote_url"
-            tal:content="title" />
+            tal:content="view/data/title" />
       </h2>
       <h3 tal:condition="python:htmltag == 'h3'">
          <a tal:attributes="href remote_url"
-            tal:content="title" />
+            tal:content="view/data/title" />
       </h3>
       <h4 tal:condition="python:htmltag == 'h4'">
          <a tal:attributes="href remote_url"
-            tal:content="title" />
+            tal:content="view/data/title" />
       </h4>
     </tal:text>
 

@@ -109,7 +109,7 @@ class BannerTileTestCase(TestTileMixin, unittest.TestCase):
         rendered = self.tile()
         self.assertIn('<img ', rendered)
         # https://github.com/collective/collective.cover/issues/182
-        self.assertIn('alt="Test image"', rendered)
+        self.assertIn('alt="This image was created for testing purposes"', rendered)
 
     def test_render_with_link(self):
         obj = self.portal['my-link']

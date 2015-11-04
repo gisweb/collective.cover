@@ -24,7 +24,7 @@
                                    width thumbnail/width;
                                    height thumbnail/height;
                                    class view/get_image_position;
-                                   alt obj/Title;" />
+                                   alt obj/Description|obj/Title" />
             </a>
           </tal:image>
 

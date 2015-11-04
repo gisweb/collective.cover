@@ -6,6 +6,9 @@ There's a frood who really knows where his towel is.
 1.0a12 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Review alt attribute of images (closes `#559`_).
+  [rodfersou]
+
 - Use "application/javascript" media type instead of the obsolete "text/javascript".
   [hvelarde]
 
@@ -691,4 +694,5 @@ There's a frood who really knows where his towel is.
 .. _`#504`: https://github.com/collective/collective.cover/issues/504
 .. _`#530`: https://github.com/collective/collective.cover/issues/530
 .. _`#534`: https://github.com/collective/collective.cover/issues/534
+.. _`#559`: https://github.com/collective/collective.cover/issues/559
 .. _`PloneFormGen`: https://pypi.python.org/pypi/Products.PloneFormGen

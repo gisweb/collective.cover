@@ -184,7 +184,7 @@ class BasicTileTestCase(TestTileMixin, unittest.TestCase):
                                             ITilesConfigurationScreen)
         tile_conf_adapter.set_configuration({'image': {'visibility': 'on', 'imgsize': 'large'}})
         rendered = self.tile()
-        self.assertIn('alt="Test news item"', rendered)
+        self.assertIn('alt="This news item was created for testing purposes"', rendered)
 
     def test_delete_tile_persistent_data(self):
         permissions = getMultiAdapter(
